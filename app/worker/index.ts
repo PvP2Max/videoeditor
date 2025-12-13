@@ -79,7 +79,7 @@ const processJob = async () => {
       assets.map((a) => ({
         id: a.id,
         path: assetPaths[a.id],
-        kind: a.kind
+        kind: a.kind === "AUDIO" ? "AUDIO" : "VIDEO"
       }))
     );
     appendLog("Analysis complete");
