@@ -17,7 +17,6 @@ ENV NODE_ENV=production
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public
 COPY --from=builder /app/app/prisma ./app/prisma
 COPY --from=builder /app/scripts/start-app.sh ./start-app.sh
 RUN chmod +x ./start-app.sh
