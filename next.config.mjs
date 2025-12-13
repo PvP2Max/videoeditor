@@ -2,7 +2,6 @@
 const nextConfig = {
   output: "standalone",
   experimental: {
-    typedRoutes: true,
     serverActions: {
       bodySizeLimit: "50mb"
     }
