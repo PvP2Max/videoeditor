@@ -26,7 +26,7 @@ model Asset {
   id          String     @id @default(uuid())
   projectId   String
   project     Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  kind        AssetKind
+  kind        String
   filename    String
   contentType String
   size        Int
@@ -38,7 +38,7 @@ model Job {
   id          String       @id @default(uuid())
   projectId   String
   project     Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  status      JobStatus    @default(QUEUED)
+  status      String       @default("QUEUED")
   stage       String       @default("pending")
   progress    Int          @default(0)
   error       String?
@@ -56,28 +56,9 @@ model Artifact {
   project     Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
   jobId       String?
   job         Job?          @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  type        ArtifactType
+  type        String
   r2Key       String
   contentType String
   size        Int?
   createdAt   DateTime      @default(now())
-}
-
-enum AssetKind {
-  VIDEO
-  AUDIO
-}
-
-enum JobStatus {
-  QUEUED
-  PROCESSING
-  COMPLETED
-  FAILED
-}
-
-enum ArtifactType {
-  ANALYSIS
-  EDL
-  LOG
-  RENDER
 }
