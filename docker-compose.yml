@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: file:/data/db.sqlite
+    volumes:
+      - db_data:/data
+    depends_on:
+      - worker
+    networks:
+      - apps-net
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: file:/data/db.sqlite
+    volumes:
+      - db_data:/data
+    networks:
+      - apps-net
+
+volumes:
+  db_data:
+    external: false
+
+networks:
+  apps-net:
+    external: true
