@@ -1,8 +1,8 @@
 import Link from "next/link";
 import "./globals.css";
-import { CSRF_COOKIE, getSession } from "../lib/auth";
+import { CSRF_COOKIE, getSession } from "./lib/auth";
 import { cookies } from "next/headers";
-import LogoutButton from "../components/logout-button";
+import LogoutButton from "./components/logout-button";
 
 export const metadata = {
   title: "AI Video Editor",

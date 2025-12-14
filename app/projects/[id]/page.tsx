@@ -1,10 +1,10 @@
 import { notFound, redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { prisma } from "../../../lib/db";
-import { CSRF_COOKIE, getSession } from "../../../lib/auth";
-import UploadPanel from "../../../components/upload-panel";
-import JobPanel from "../../../components/job-panel";
-import ArtifactList from "../../../components/artifact-list";
+import { prisma } from "../../lib/db";
+import { CSRF_COOKIE, getSession } from "../../lib/auth";
+import UploadPanel from "../../components/upload-panel";
+import JobPanel from "../../components/job-panel";
+import ArtifactList from "../../components/artifact-list";
 
 type Params = { params: { id: string } };
 

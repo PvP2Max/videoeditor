@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { prisma } from "../lib/db";
-import { getSession } from "../lib/auth";
+import { prisma } from "./lib/db";
+import { getSession } from "./lib/auth";
 
 export default async function HomePage() {
   if (!getSession()) {

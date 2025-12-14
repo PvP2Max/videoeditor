@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import ProjectForm from "../../components/project-form";
-import { CSRF_COOKIE, getSession } from "../../lib/auth";
+import ProjectForm from "../components/project-form";
+import { CSRF_COOKIE, getSession } from "../lib/auth";
 
 export default function NewProjectPage() {
   if (!getSession()) {
