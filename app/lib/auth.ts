@@ -31,7 +31,13 @@ export const createSessionToken = (user: string) => {
 
 export const verifySessionToken = (token: string | undefined | null): Session | null => {
   if (!token) return null;
-  const parts = token.split(".");
+  let value = token;
+  try {
+    value = decodeURIComponent(token);
+  } catch {
+    // ignore decode failures and use raw token
+  }
+  const parts = value.split(".");
   if (parts.length !== 2) return null;
   const [payload, signature] = parts;
   if (sign(payload) !== signature) return null;
